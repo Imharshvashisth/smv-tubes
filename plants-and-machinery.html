@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plants & Machinery | SMV Tubes Premium Manufacturing</title>
+
+    <!-- Google Fonts: Montserrat (Headings) & Manrope (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* =========================================
+               ROOT VARIABLES (DARK & LIGHT THEMES)
+               EXACT MATCH WITH HOME PAGE
+           ========================================= */
+        :root {
+            /* Brand Colors */
+            --smv-blue: #0a3a8b;
+            --smv-red: #c8102e;
+
+            /* Dark Theme Colors */
+            --smv-bg-base: #0d1117;
+            --smv-bg-surface: #161b22;
+            --smv-bg-card: #21262d;
+            --smv-text-main: #f0f6fc;
+            --smv-text-muted: #8b949e;
+            --smv-border: rgba(255, 255, 255, 0.08);
+
+            /* Light Theme Colors */
+            --smv-light-base: #ffffff;
+            --smv-light-surface: #f8f9fa;
+            --smv-light-card: #ffffff;
+            --smv-light-text-main: #111827;
+            --smv-light-text-muted: #4b5563;
+            --smv-light-border: rgba(0, 0, 0, 0.08);
+
+            --font-head: "Montserrat", sans-serif;
+            --font-body: "Manrope", sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* =========================================
+               GLOBAL SETTINGS & LENIS SMOOTH SCROLL
+           ========================================= */
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: var(--smv-bg-base);
+            color: var(--smv-text-main);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-head);
+            margin-bottom: 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--smv-bg-base);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--smv-red);
+            border-radius: 4px;
+        }
+
+        /* Universal Section Classes */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            color: var(--smv-red);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        /* Themes */
+        .theme-dark {
+            background-color: var(--smv-bg-base);
+            color: var(--smv-text-main);
+        }
+
+        .theme-dark .section-title {
+            color: var(--smv-text-main);
+        }
+
+        .theme-dark .section-title span {
+            color: var(--smv-red);
+        }
+
+        .theme-light {
+            background-color: var(--smv-light-base);
+            color: var(--smv-light-text-main);
+        }
+
+        .theme-light .section-title {
+            color: var(--smv-light-text-main);
+        }
+
+        .theme-light .section-title span {
+            color: var(--smv-blue);
+        }
+
+        /* =========================================
+               1. RESPONSIVE NAVBAR (EXACT MATCH)
+           ========================================= */
+        .smv-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.6);
+            padding: 15px 0;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition-smooth);
+        }
+
+        .smv-navbar.scrolled {
+            padding: 10px 0;
+            background: rgba(13, 17, 23, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--smv-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .smv-logo {
+            height: 60px;
+            width: auto;
+            transition: var(--transition-smooth);
+            filter: brightness(1.2);
+        }
+
+        .smv-logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .navbar-nav .nav-link {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--smv-text-main) !important;
+            position: relative;
+            padding: 10px 15px !important;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-nav .nav-link::after {
+                content: "";
+                position: absolute;
+                bottom: 5px;
+                left: 15px;
+                width: 0%;
+                height: 2px;
+                background-color: var(--smv-red);
+                transition: var(--transition-smooth);
+            }
+
+            .navbar-nav .nav-link:hover::after {
+                width: calc(100% - 30px);
+            }
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--smv-red) !important;
+        }
+
+        .dropdown-menu {
+            background: #ffffff;
+            border: none;
+            border-top: 4px solid var(--smv-red);
+            border-radius: 2px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+        }
+
+        .dropdown-item {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #222;
+            padding: 10px 25px;
+            transition: var(--transition-smooth);
+        }
+
+        .dropdown-item:hover {
+            background-color: #f4f6fa;
+            color: var(--smv-red);
+            padding-left: 30px;
+        }
+
+        .smv-cta-btn {
+            background: var(--smv-red);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition-smooth);
+            border: 2px solid var(--smv-red);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .smv-cta-btn:hover {
+            background: transparent;
+            color: var(--smv-red);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+               2. INNER PAGE HERO (Professional Industrial)
+           ========================================= */
+        .smv-inner-hero {
+            position: relative;
+            width: 100vw;
+            min-height: 55vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--smv-bg-base);
+            padding-top: 80px;
+            border-bottom: 1px solid var(--smv-border);
+        }
+
+        .smv-inner-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80') center/cover no-repeat;
+            filter: contrast(1.2) brightness(0.2) grayscale(0.5);
+            /* Darker & Grittier */
+            z-index: 1;
+        }
+
+        .smv-inner-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(13, 17, 23, 1) 0%, rgba(13, 17, 23, 0.6) 50%, transparent 100%),
+                url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.03)"/></svg>');
+            z-index: 2;
+        }
+
+        .smv-inner-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .smv-inner-title {
+            font-family: var(--font-head);
+            font-weight: 900;
+            font-size: clamp(1.6rem, 4vw, 4.5rem);
+            color: var(--smv-text-main);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            /* Forces heading on exactly 1 line */
+        }
+
+        .smv-inner-title span {
+            color: var(--smv-red);
+        }
+
+        .smv-breadcrumb {
+            display: inline-flex;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--smv-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--smv-red);
+            padding-left: 15px;
+        }
+
+        .smv-breadcrumb a {
+            color: var(--smv-text-main);
+            transition: var(--transition-smooth);
+        }
+
+        .smv-breadcrumb a:hover {
+            color: var(--smv-red);
+        }
+
+        /* =========================================
+               3. THE ARSENAL (Machinery Alternate Blocks)
+           ========================================= */
+        .smv-machine-wrap {
+            position: relative;
+            background: var(--smv-bg-surface);
+            border-bottom: 1px solid var(--smv-border);
+            overflow: hidden;
+        }
+
+        .smv-machine-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 120px;
+            position: relative;
+        }
+
+        .smv-machine-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .smv-machine-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .smv-machine-img-col {
+            flex: 0 0 50%;
+            position: relative;
+            padding: 0 30px;
+        }
+
+        .smv-machine-img-box {
+            position: relative;
+            /* ZERO Border Radius for raw industrial feel */
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Heavy steel accent edge */
+        .smv-machine-img-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--smv-red);
+            z-index: 3;
+        }
+
+        .smv-machine-row.reverse .smv-machine-img-box::after {
+            left: auto;
+            right: 0;
+        }
+
+        .smv-machine-img-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(200, 16, 46, 0.2), transparent);
+            z-index: 2;
+        }
+
+        .smv-machine-img-box img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            filter: grayscale(0.3) contrast(1.1);
+            transition: var(--transition-smooth);
+            display: block;
+        }
+
+        .smv-machine-row:hover .smv-machine-img-box img {
+            transform: scale(1.05);
+            filter: grayscale(0) contrast(1);
+        }
+
+        .smv-machine-text-col {
+            flex: 0 0 50%;
+            padding: 0 50px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* The giant watermark number behind text */
+        .smv-machine-number {
+            position: absolute;
+            top: -50px;
+            left: 20px;
+            font-family: var(--font-head);
+            font-size: 15rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            line-height: 1;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .smv-machine-row.reverse .smv-machine-number {
+            left: auto;
+            right: 20px;
+        }
+
+        .smv-m-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--smv-text-main);
+            margin-bottom: 20px;
+        }
+
+        .smv-m-desc {
+            font-size: 1.1rem;
+            color: var(--smv-text-muted);
+            margin-bottom: 30px;
+        }
+
+        .smv-m-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .smv-m-features li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--smv-text-main);
+        }
+
+        .smv-m-features i {
+            color: var(--smv-red);
+            font-size: 1.2rem;
+        }
+
+        /* =========================================
+               4. TESTING LAB (Light Theme Grid)
+           ========================================= */
+        .smv-lab-wrap {
+            background-color: var(--smv-light-base);
+            border-bottom: 1px solid var(--smv-light-border);
+        }
+
+        .smv-lab-card {
+            background: var(--smv-light-surface);
+            border: 1px solid var(--smv-light-border);
+            padding: 40px;
+            /* ZERO border radius here too */
+            border-radius: 0;
+            height: 100%;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .smv-lab-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--smv-red);
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .smv-lab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            background: #fff;
+        }
+
+        .smv-lab-icon {
+            font-size: 3rem;
+            color: var(--smv-blue);
+            margin-bottom: 25px;
+            transition: var(--transition-smooth);
+        }
+
+        .smv-lab-card:hover .smv-lab-icon {
+            color: var(--smv-red);
+            transform: scale(1.1);
+        }
+
+        .smv-lab-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--smv-light-text-main);
+            margin-bottom: 15px;
+        }
+
+        .smv-lab-desc {
+            color: var(--smv-light-text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* =========================================
+               5. MASSIVE PREMIUM FOOTER (EXACT MATCH)
+           ========================================= */
+        .smv-footer {
+            background-color: #05070a;
+            padding: 100px 0 30px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--smv-border);
+        }
+
+        .smv-footer-watermark {
+            position: absolute;
+            bottom: -40px;
+            right: -5%;
+            font-size: 15vw;
+            font-family: var(--font-head);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .smv-footer-top {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .smv-footer-col {
+            position: relative;
+            z-index: 1;
+        }
+
+        .smv-footer-title {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .smv-footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .smv-footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .smv-footer-links a {
+            color: var(--smv-text-muted);
+            font-size: 0.95rem;
+            transition: 0.3s;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .smv-footer-links a:hover {
+            color: var(--smv-red);
+            padding-left: 8px;
+        }
+
+        .smv-contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .smv-contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--smv-text-muted);
+            line-height: 1.6;
+        }
+
+        .smv-contact-list i {
+            color: var(--smv-red);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .smv-newsletter-box {
+            background: var(--smv-bg-surface);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--smv-border);
+        }
+
+        .smv-newsletter-input {
+            background: var(--smv-bg-base);
+            border: 1px solid var(--smv-border);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .smv-newsletter-btn {
+            width: 100%;
+            background: var(--smv-red);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .smv-newsletter-btn:hover {
+            background: var(--smv-blue);
+        }
+
+        /* FAB */
+        .smv-fab-wrapper {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 9999;
+        }
+
+        .smv-fab-item {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .smv-fab-whatsapp {
+            background-color: #25d366;
+        }
+
+        .smv-fab-phone {
+            background-color: var(--smv-blue);
+        }
+
+        .smv-fab-email {
+            background-color: var(--smv-red);
+        }
+
+        .smv-fab-item:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: #fff;
+        }
+
+        /* Mobile Fixes */
+        @media (max-width: 991px) {
+            .section-padding {
+                padding: 70px 0;
+            }
+
+            .smv-navbar {
+                padding: 15px 0;
+            }
+
+            .navbar-collapse {
+                background: #0d1117;
+                padding: 20px;
+                border-radius: 8px;
+                margin-top: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .dropdown-menu {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding-left: 15px;
+            }
+
+            .dropdown-item {
+                color: #ccc;
+            }
+
+            .dropdown-item:hover {
+                background: transparent;
+                color: var(--smv-red);
+                padding-left: 25px;
+            }
+
+            .navbar-toggler {
+                border-color: rgba(255, 255, 255, 0.2) !important;
+                padding: 8px 12px;
+            }
+
+            .navbar-toggler-icon {
+                filter: invert(1);
+            }
+
+            /* Plants Page Specific Mobile Fixes */
+            .smv-machine-row,
+            .smv-machine-row.reverse {
+                flex-direction: column;
+                gap: 40px;
+                margin-bottom: 80px;
+            }
+
+            .smv-machine-img-col,
+            .smv-machine-text-col {
+                flex: 0 0 100%;
+                padding: 0 15px;
+            }
+
+            .smv-machine-img-box img {
+                height: 350px;
+            }
+
+            .smv-machine-number {
+                font-size: 8rem;
+                top: -30px;
+                left: 10px;
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR (RESPONSIVE FIXED) -->
+    <nav class="navbar navbar-expand-lg smv-navbar" id="smvNavbar">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a href="index.html" class="navbar-brand smv-brand">
+                <!-- Using placeholder for logo as in Home -->
+                <img src="assets/images/logo/smv-logo.png" alt="SMV Tubes Logo" class="smv-logo"
+                    style="border-radius:4px;">
+            </a>
+
+            <!-- Mobile Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#smvNavMenu"
+                aria-controls="smvNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Links -->
+            <div class="collapse navbar-collapse" id="smvNavMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center smv-nav-links">
+                    <li class="nav-item"><a href="index.html" class="nav-link smv-nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about-us.html" class="nav-link smv-nav-link">About Us</a></li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown smv-dropdown-wrap">
+                        <a class="nav-link smv-nav-link dropdown-toggle" href="#" id="prodDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu smv-dropdown-menu" aria-labelledby="prodDropdown">
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Round Tubes /
+                                    Pipes</a></li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Square Tubes /
+                                    Pipes</a></li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Rectangle Tubes
+                                    / Pipes</a></li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Oval Tubes</a>
+                            </li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">Custom Steel
+                                    Profiles</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a href="quality.html" class="nav-link smv-nav-link">Quality</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link smv-nav-link"
+                            style="color: var(--smv-red) !important;">Plants & Machinery</a></li>
+                    <li class="nav-item"><a href="#blogs" class="nav-link smv-nav-link">Blogs</a></li>
+                    <li class="nav-item"><a href="contact-us.html" class="nav-link smv-nav-link">Contact Us</a></li>
+
+                    <!-- Mobile CTA Button -->
+                    <li class="nav-item d-lg-none mt-3">
+                        <a href="contact-us.html"
+                            class="smv-cta-btn w-100 justify-content-center text-decoration-none">Get a
+                            Quote</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Desktop CTA Button -->
+            <div class="d-none d-lg-block ms-4">
+                <a href="contact-us.html" class="smv-cta-btn text-decoration-none">Get a Quote</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- INNER PAGE HERO -->
+    <section class="smv-inner-hero">
+        <div class="smv-inner-hero-bg gs-parallax-bg"></div>
+        <div class="smv-inner-hero-overlay"></div>
+        <div class="container smv-inner-content">
+            <div class="row">
+                <div class="col-lg-10">
+                    <div class="smv-breadcrumb gs-reveal-hero">
+                        <a href="index.html">Home</a> <span>/</span> <span
+                            style="color: var(--smv-text-main);">Infrastructure</span>
+                    </div>
+                    <h1 class="smv-inner-title gs-reveal-hero">Plants & <span>Machinery</span></h1>
+                    <p class="mt-3 gs-reveal-hero"
+                        style="color: var(--smv-text-muted); font-size: 1.15rem; max-width: 650px;">
+                        Step inside our state-of-the-art manufacturing facility. Raw steel is forged into architectural
+                        masterpieces using heavy-duty, world-class precision machinery.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MACHINERY SHOWCASE (THE ARSENAL) -->
+    <section class="smv-machine-wrap section-padding theme-dark">
+        <div class="container">
+            <div class="section-header gs-head">
+                <span class="section-subtitle">Manufacturing Arsenal</span>
+                <h2 class="section-title">Heavy-Duty <span>Capabilities</span></h2>
+            </div>
+
+            <!-- Machine Block 1 -->
+            <div class="smv-machine-row">
+                <div class="smv-machine-img-col gs-m-img-left">
+                    <div class="smv-machine-img-box">
+                        <img src="https://imgs.search.brave.com/yzGHsmnSuA_Lq8yRw31VswsqdnZO2OTYcmypPHY1kLs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2hlbmdzaGVuZ2lu/ZHVzdHJ5LmNvbS9k/YXRhL3VwbG9hZC91/ZWRpdG9yLzIwMjUw/NjA0LzY4M2ZmZjRj/NWRiMDIuanBn"
+                            alt="Tube Mills">
+                    </div>
+                </div>
+                <div class="smv-machine-text-col gs-m-text-right">
+                    <div class="smv-machine-number">01</div>
+                    <span class="section-subtitle">Precision Forming</span>
+                    <h3 class="smv-m-title">High-Frequency Tube Mills</h3>
+                    <p class="smv-m-desc">Our automated tube mills utilize high-frequency induction welding to ensure
+                        flawless, continuous seams. Capable of handling massive gauges and diameters with zero tolerance
+                        for error.</p>
+                    <ul class="smv-m-features">
+                        <li><i class="fa-solid fa-gear"></i> Diameter Capacity: 10mm to 350mm</li>
+                        <li><i class="fa-solid fa-gauge-high"></i> High-Speed Production Lines</li>
+                        <li><i class="fa-solid fa-microchip"></i> PLC Controlled Precision Automation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Machine Block 2 (Reverse) -->
+            <div class="smv-machine-row reverse">
+                <div class="smv-machine-img-col gs-m-img-right">
+                    <div class="smv-machine-img-box">
+                        <img src="https://imgs.search.brave.com/lNgl2rTA3fVMwa8Oq334MoJjJlJQJ5OxXHnSc1Kz3KU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y2hlbmdzaGVuZ2lu/ZHVzdHJ5LmNvbS9k/YXRhL3dhdGVybWFy/ay8yMDE5MDgwNS81/ZDQ3OWU1ZDNjZjIw/LmpwZw"
+                            alt="Annealing Furnace">
+                    </div>
+                </div>
+                <div class="smv-machine-text-col gs-m-text-left">
+                    <div class="smv-machine-number">02</div>
+                    <span class="section-subtitle">Thermal Dynamics</span>
+                    <h3 class="smv-m-title">Continuous Bright Annealing</h3>
+                    <p class="smv-m-desc">To relieve internal stresses generated during the welding process, tubes are
+                        passed through our state-of-the-art bright annealing furnaces in a controlled hydrogen
+                        atmosphere.</p>
+                    <ul class="smv-m-features">
+                        <li><i class="fa-solid fa-fire-flame-curved"></i> Temperature Control up to 1150°C</li>
+                        <li><i class="fa-solid fa-shield-halved"></i> Prevents Surface Oxidation</li>
+                        <li><i class="fa-solid fa-check-double"></i> Enhances Tensile Ductility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Machine Block 3 -->
+            <div class="smv-machine-row">
+                <div class="smv-machine-img-col gs-m-img-left">
+                    <div class="smv-machine-img-box">
+                        <img src="https://imgs.search.brave.com/xJOdQx0hvcvV4zBQFY7nyqAFs7iDECSY2gc_-LpoqOM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aWlt/Zy50aXN0YXRpYy5j/b20vZnAvMS8wMDUv/NzE5L3N0YWlubGVz/cy1zdGVlbC04ay1t/aXJyb3ItcG9saXNo/aW5nLW1hY2hpbmUt/MzE0LmpwZw"
+                            alt="Polishing Lines">
+                    </div>
+                </div>
+                <div class="smv-machine-text-col gs-m-text-right">
+                    <div class="smv-machine-number">03</div>
+                    <span class="section-subtitle">Flawless Finish</span>
+                    <h3 class="smv-m-title">Multi-Head Polishing Lines</h3>
+                    <p class="smv-m-desc">Aesthetics matter. Our advanced multi-head polishing machines deliver a
+                        mirror-like finish, essential for architectural and pharmaceutical grade stainless steel
+                        applications.</p>
+                    <ul class="smv-m-features">
+                        <li><i class="fa-solid fa-wand-magic-sparkles"></i> Grit Finish: 180G, 320G, 400G, 600G</li>
+                        <li><i class="fa-solid fa-droplet"></i> Mirror & Matte Finishes Available</li>
+                        <li><i class="fa-solid fa-shield-virus"></i> Enhances Anti-Corrosive Properties</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Machine Block 4 (Reverse) -->
+            <div class="smv-machine-row reverse">
+                <div class="smv-machine-img-col gs-m-img-right">
+                    <div class="smv-machine-img-box">
+                        <img src="https://imgs.search.brave.com/iRD8wjdQigF2ztFeg8aJodwUpOwIf0iQuU863gBylYU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudGhlZmFicmlj/YXRvci5jb20vYS80/LXN0ZXBzLXRvd2Fy/ZC1lZmZlY3RpdmUt/d2VsZC1mdW1lLW1p/dGlnYXRpb24tMTc3/NzQwNjExNy5qcGc_/c2l6ZT0zMDB4"
+                            alt="Slitting Lines">
+                    </div>
+                </div>
+                <div class="smv-machine-text-col gs-m-text-left">
+                    <div class="smv-machine-number">04</div>
+                    <span class="section-subtitle">Raw Material Prep</span>
+                    <h3 class="smv-m-title">Precision Slitting Lines</h3>
+                    <p class="smv-m-desc">The journey begins here. Our heavy-duty slitting lines cut massive stainless
+                        steel master coils into exact widths required for specific tube dimensions with zero burr
+                        tolerance.</p>
+                    <ul class="smv-m-features">
+                        <li><i class="fa-solid fa-scissors"></i> High Precision Rotary Knives</li>
+                        <li><i class="fa-solid fa-weight-hanging"></i> Handles Master Coils up to 25 Tons</li>
+                        <li><i class="fa-solid fa-ruler-combined"></i> Exact Width Tolerance (± 0.05mm)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TESTING LAB (LIGHT THEME) -->
+    <section class="smv-lab-wrap section-padding theme-light">
+        <div class="container">
+            <div class="section-header gs-lab-head">
+                <span class="section-subtitle">Quality Assurance</span>
+                <h2 class="section-title">The Testing <span>Laboratory</span></h2>
+                <p style="color: var(--smv-light-text-muted); max-width: 600px; margin: 15px auto 0;">
+                    Every single batch is subjected to rigorous destructive and non-destructive testing before it leaves
+                    our facility.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 gs-lab-card">
+                    <div class="smv-lab-card">
+                        <div class="smv-lab-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                        <h3 class="smv-lab-title">Spectro Analysis</h3>
+                        <p class="smv-lab-desc">Instant computerized chemical composition testing to verify the exact
+                            grade of stainless steel (304, 316L, etc.) using OES technology.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gs-lab-card">
+                    <div class="smv-lab-card">
+                        <div class="smv-lab-icon"><i class="fa-solid fa-compress"></i></div>
+                        <h3 class="smv-lab-title">Universal Testing Machine</h3>
+                        <p class="smv-lab-desc">Evaluates the mechanical properties including Tensile Strength, Yield
+                            Strength, and Elongation of the finished tubes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gs-lab-card">
+                    <div class="smv-lab-card">
+                        <div class="smv-lab-icon"><i class="fa-solid fa-water"></i></div>
+                        <h3 class="smv-lab-title">Hydrostatic Testing</h3>
+                        <p class="smv-lab-desc">Tubes are filled with water and pressurized to ensure there are no
+                            microscopic leaks or weld failures under extreme stress.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gs-lab-card">
+                    <div class="smv-lab-card">
+                        <div class="smv-lab-icon"><i class="fa-solid fa-microscope"></i></div>
+                        <h3 class="smv-lab-title">Metallography Check</h3>
+                        <p class="smv-lab-desc">Microscopic examination to inspect the grain structure of the weld seam
+                            to ensure proper fusion and homogeneity.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gs-lab-card">
+                    <div class="smv-lab-card">
+                        <div class="smv-lab-icon"><i class="fa-solid fa-ring"></i></div>
+                        <h3 class="smv-lab-title">Flaring & Flattening</h3>
+                        <p class="smv-lab-desc">Destructive testing methods to check the ductility of the material and
+                            the integrity of the welded joint.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 gs-lab-card">
+                    <div class="smv-lab-card">
+                        <div class="smv-lab-icon"><i class="fa-solid fa-ruler"></i></div>
+                        <h3 class="smv-lab-title">Surface & Dimension Check</h3>
+                        <p class="smv-lab-desc">Digital verniers, micrometers, and surface roughness testers ensure
+                            physical specs match international standards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREMIUM MODERN MASSIVE FOOTER (EXACT MATCH) -->
+    <footer class="smv-footer theme-dark">
+        <div class="smv-footer-watermark">SMV TUBES</div>
+        <div class="container">
+            <div class="row smv-footer-top">
+                <!-- Brand Info -->
+                <div class="col-lg-4 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <!-- Placeholder matching the header logo spot -->
+                    <img src="assets/images/logo/smv-logo.png" alt="SMV Tubes Logo"
+                        style="height: 65px; margin-bottom: 25px; border-radius:4px;">
+                    <p style="color: var(--smv-text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 30px;">
+                        Forging the structural future of the world with unyielding quality and precision steel
+                        manufacturing. Your globally trusted partner in industrial excellence.
+                    </p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #fff; font-size: 1.2rem; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #fff; font-size: 1.2rem; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #fff; font-size: 1.2rem; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="col-lg-2 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <h4 class="smv-footer-title">Quick Links</h4>
+                    <ul class="smv-footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="quality.html">Quality</a></li>
+                        <li><a href="#">Plants & Machinery</a></li>
+                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="col-lg-3 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <h4 class="smv-footer-title">Get In Touch</h4>
+                    <ul class="smv-contact-list">
+                        <li><i class="fa-solid fa-location-dot"></i><span>SMV Industrial Estate, Phase 1<br>New Delhi,
+                                India - 110020</span></li>
+                        <li><i class="fa-solid fa-phone"></i><span>+91 98765 43210<br>+91 11 2345 6789</span></li>
+                        <li><i class="fa-solid fa-envelope"></i><span>sales@smvtubes.com<br>info@smvtubes.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <h4 class="smv-footer-title">Newsletter</h4>
+                    <p style="color: var(--smv-text-muted); margin-bottom: 20px;">Subscribe to receive latest updates on
+                        steel market trends.</p>
+                    <div class="smv-newsletter-box">
+                        <input type="email" class="smv-newsletter-input" placeholder="Your Email Address">
+                        <button class="smv-newsletter-btn">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="row align-items-center smv-footer-col gs-footer" style="padding-top: 10px;">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p style="color: var(--smv-text-muted); margin: 0; font-size: 0.95rem;">&copy; 2026 SMV Tubes Pvt.
+                        Ltd. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#"
+                        style="color: var(--smv-text-muted); margin-left: 20px; font-size: 0.95rem; text-decoration: none;">Privacy
+                        Policy</a>
+                    <a href="#"
+                        style="color: var(--smv-text-muted); margin-left: 20px; font-size: 0.95rem; text-decoration: none;">Terms
+                        of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING ACTION BUTTONS -->
+    <div class="smv-fab-wrapper">
+        <a href="https://wa.me/919876543210" class="smv-fab-item smv-fab-whatsapp" title="WhatsApp"><i
+                class="fa-brands fa-whatsapp"></i></a>
+        <a href="tel:+919876543210" class="smv-fab-item smv-fab-phone" title="Call"><i
+                class="fa-solid fa-phone"></i></a>
+        <a href="mailto:sales@smvtubes.com" class="smv-fab-item smv-fab-email" title="Email"><i
+                class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script>
+        // 1. Lenis Smooth Scroll Setup
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. Navbar Scroll Toggle
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) document.getElementById('smvNavbar').classList.add('scrolled');
+            else document.getElementById('smvNavbar').classList.remove('scrolled');
+        });
+
+        // 3. GSAP Animations for Inner Page
+        window.addEventListener('load', () => {
+            // Navbar & Hero
+            gsap.from(".smv-navbar", { y: -100, opacity: 0, duration: 1 });
+            gsap.from(".gs-reveal-hero", { y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out", delay: 0.2 });
+            gsap.to(".gs-parallax-bg", { y: 150, scrollTrigger: { trigger: ".smv-inner-hero", start: "top top", end: "bottom top", scrub: true } });
+
+            // Arsenal (Machinery) Head
+            gsap.from(".gs-head", { scrollTrigger: { trigger: ".smv-machine-wrap", start: "top 85%" }, y: 30, opacity: 0, duration: 0.8 });
+
+            // Arsenal Alternating Rows
+            const mRows = document.querySelectorAll('.smv-machine-row');
+            mRows.forEach((row) => {
+                let imgCol = row.querySelector('.gs-m-img-left');
+                let txtCol = row.querySelector('.gs-m-text-right');
+
+                if (!imgCol) imgCol = row.querySelector('.gs-m-img-right');
+                if (!txtCol) txtCol = row.querySelector('.gs-m-text-left');
+
+                let imgX = row.classList.contains('reverse') ? 50 : -50;
+                let txtX = row.classList.contains('reverse') ? -50 : 50;
+
+                // Animate Image
+                gsap.from(imgCol, {
+                    scrollTrigger: { trigger: row, start: "top 75%" },
+                    x: imgX, opacity: 0, duration: 1, ease: "power2.out"
+                });
+
+                // Animate Text
+                gsap.from(txtCol, {
+                    scrollTrigger: { trigger: row, start: "top 75%" },
+                    x: txtX, opacity: 0, duration: 1, delay: 0.2, ease: "power2.out"
+                });
+            });
+
+            // Lab / Testing Section
+            gsap.from(".gs-lab-head", { scrollTrigger: { trigger: ".smv-lab-wrap", start: "top 85%" }, y: 30, opacity: 0, duration: 0.8 });
+            gsap.from(".gs-lab-card", { scrollTrigger: { trigger: ".smv-lab-wrap", start: "top 75%" }, y: 40, opacity: 0, duration: 0.8, stagger: 0.15 });
+
+            // Footer
+            gsap.from(".gs-footer", { scrollTrigger: { trigger: ".smv-footer", start: "top 85%" }, y: 30, opacity: 0, duration: 0.8, stagger: 0.1 });
+
+            // Refresh ScrollTrigger
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+
+</html>

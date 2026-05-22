@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SMV Tubes</title>
+
+    <!-- Google Fonts: Montserrat (Headings) & Manrope (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* =========================================
+           ROOT VARIABLES & GLOBAL STYLES
+        ========================================= */
+        :root {
+            --smv-blue: #0A3A8B;
+            --smv-red: #C8102E;
+            --smv-bg-base: #0d1117;
+            --smv-bg-surface: #161b22;
+            --smv-bg-card: #21262d;
+            --smv-text-main: #f0f6fc;
+            --smv-text-muted: #8b949e;
+            --smv-border: rgba(255, 255, 255, 0.08);
+            --smv-light-base: #ffffff;
+            --smv-light-surface: #f8f9fa;
+            --smv-light-card: #ffffff;
+            --smv-light-text-main: #111827;
+            --smv-light-text-muted: #4b5563;
+            --smv-light-border: rgba(0, 0, 0, 0.08);
+
+            --font-head: 'Montserrat', sans-serif;
+            --font-body: 'Manrope', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: var(--smv-bg-base);
+            color: var(--smv-text-main);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html.lenis {
+            height: auto;
+        }
+
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-head);
+            margin-bottom: 0;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--smv-bg-base);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--smv-red);
+            border-radius: 4px;
+        }
+
+        /* Universal Section Classes */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            color: var(--smv-red);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .theme-dark {
+            background-color: var(--smv-bg-base);
+            color: var(--smv-text-main);
+        }
+
+        .theme-dark .section-title {
+            color: var(--smv-text-main);
+        }
+
+        .theme-dark .section-title span {
+            color: var(--smv-red);
+        }
+
+        .theme-light {
+            background-color: var(--smv-light-base);
+            color: var(--smv-light-text-main);
+        }
+
+        .theme-light .section-title {
+            color: var(--smv-light-text-main);
+        }
+
+        .theme-light .section-title span {
+            color: var(--smv-blue);
+        }
+
+        /* =========================================
+           NAVBAR (Professional & Compact)
+        ========================================= */
+        .smv-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.4);
+            padding: 20px 0;
+            border-bottom: 1px solid transparent;
+            transition: var(--transition-smooth);
+        }
+
+        .smv-navbar.scrolled {
+            padding: 12px 0;
+            background: rgba(13, 17, 23, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--smv-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .smv-logo {
+            height: 70px;
+            width: auto;
+            transition: var(--transition-smooth);
+            filter: brightness(1.2);
+        }
+
+        .smv-logo:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .smv-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .smv-nav-link {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--smv-text-main);
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+
+        .smv-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--smv-red);
+            transition: var(--transition-smooth);
+        }
+
+        .smv-nav-link:hover {
+            color: var(--smv-red);
+        }
+
+        .smv-nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Setup */
+        .smv-dropdown-wrap {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: -15px;
+        }
+
+        .smv-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 270px;
+            background: #ffffff;
+            border-radius: 2px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: none;
+            border-top: 4px solid var(--smv-red);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition-smooth);
+            padding: 15px 0;
+            z-index: 1001;
+        }
+
+        .smv-dropdown-wrap:hover .smv-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .smv-dropdown-item {
+            display: block;
+            padding: 12px 25px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #222;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+        }
+
+        .smv-dropdown-item:hover {
+            background-color: #f4f6fa;
+            color: var(--smv-red);
+            padding-left: 32px;
+        }
+
+        /* Mobile Navbar Fixes */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            padding: 8px 12px;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        .smv-cta-btn {
+            background: var(--smv-red);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 4px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition-smooth);
+            border: 2px solid var(--smv-red);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .smv-cta-btn:hover {
+            background: transparent;
+            color: var(--smv-red);
+            transform: translateY(-2px);
+        }
+
+        /* =========================================
+           ABOUT US: INNER HERO BANNER
+        ========================================= */
+        .about-page-hero {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1587293852726-0e10787e9db9?auto=format&fit=crop&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+            margin-top: 80px;
+            /* Offset for fixed navbar */
+        }
+
+        .about-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(13, 17, 23, 0.8), rgba(13, 17, 23, 0.95));
+            z-index: 1;
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .about-hero-title {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .about-hero-title span {
+            color: var(--smv-red);
+        }
+
+        .breadcrumb-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .breadcrumb-wrap a {
+            color: var(--smv-text-muted);
+            transition: var(--transition-smooth);
+        }
+
+        .breadcrumb-wrap a:hover {
+            color: var(--smv-red);
+        }
+
+        .breadcrumb-wrap .current {
+            color: var(--smv-red);
+        }
+
+        .breadcrumb-separator {
+            color: var(--smv-text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* =========================================
+           ABOUT US: OUR STORY (Light Theme)
+        ========================================= */
+        .story-section {
+            position: relative;
+            border-bottom: 1px solid var(--smv-light-border);
+        }
+
+        .story-image-wrap {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-image-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: contrast(1.1);
+            transition: transform 0.6s ease;
+        }
+
+        .story-image-wrap:hover img {
+            transform: scale(1.03);
+        }
+
+        .story-badge {
+            position: absolute;
+            bottom: -20px;
+            right: 30px;
+            background: var(--smv-blue);
+            color: #fff;
+            padding: 25px 35px;
+            border-radius: 4px;
+            text-align: center;
+            border-bottom: 5px solid var(--smv-red);
+            box-shadow: 0 15px 30px rgba(10, 58, 139, 0.3);
+        }
+
+        .story-badge h3 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .story-badge p {
+            margin: 0;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .story-content {
+            padding-left: 40px;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            color: var(--smv-light-text-muted);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .story-highlight {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--smv-blue);
+            border-left: 4px solid var(--smv-red);
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        /* =========================================
+           ABOUT US: MISSION & VISION (Split Cards)
+        ========================================= */
+        .mv-section {
+            background: var(--smv-light-surface);
+        }
+
+        .mv-card {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            height: 100%;
+            border: 1px solid var(--smv-light-border);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--smv-red);
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .mv-card.vision::before {
+            background: var(--smv-blue);
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .mv-card:hover::before {
+            width: 100%;
+            opacity: 0.03;
+        }
+
+        .mv-icon {
+            font-size: 3.5rem;
+            color: var(--smv-red);
+            margin-bottom: 25px;
+        }
+
+        .mv-card.vision .mv-icon {
+            color: var(--smv-blue);
+        }
+
+        .mv-card h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--smv-light-text-main);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .mv-card p {
+            font-size: 1.05rem;
+            color: var(--smv-light-text-muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* =========================================
+           ABOUT US: CORE VALUES (Dark Grid)
+        ========================================= */
+        .values-section {
+            border-top: 1px solid var(--smv-border);
+        }
+
+        .value-box {
+            text-align: center;
+            padding: 40px 30px;
+            background: var(--smv-bg-surface);
+            border: 1px solid var(--smv-border);
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            height: 100%;
+        }
+
+        .value-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(200, 16, 46, 0.4);
+            background: var(--smv-bg-card);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--smv-red);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: var(--transition-smooth);
+        }
+
+        .value-box:hover .value-icon {
+            background: var(--smv-red);
+            color: #fff;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .value-box h4 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .value-box p {
+            font-size: 0.95rem;
+            color: var(--smv-text-muted);
+            margin: 0;
+        }
+
+        /* =========================================
+           MASSIVE PREMIUM FOOTER
+        ========================================= */
+        .smv-footer {
+            background-color: #05070a;
+            padding: 100px 0 30px;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--smv-border);
+        }
+
+        .smv-footer-watermark {
+            position: absolute;
+            bottom: -40px;
+            right: -5%;
+            font-size: 15vw;
+            font-family: var(--font-head);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .smv-footer-top {
+            position: relative;
+            z-index: 1;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .smv-footer-col {
+            position: relative;
+            z-index: 1;
+        }
+
+        .smv-footer-title {
+            font-family: var(--font-head);
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .smv-footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .smv-footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .smv-footer-links a {
+            color: var(--smv-text-muted);
+            font-size: 0.95rem;
+            transition: 0.3s;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .smv-footer-links a:hover {
+            color: var(--smv-red);
+            padding-left: 8px;
+        }
+
+        .smv-contact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .smv-contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--smv-text-muted);
+            line-height: 1.6;
+        }
+
+        .smv-contact-list i {
+            color: var(--smv-red);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .smv-newsletter-box {
+            background: var(--smv-bg-surface);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--smv-border);
+        }
+
+        .smv-newsletter-input {
+            background: var(--smv-bg-base);
+            border: 1px solid var(--smv-border);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .smv-newsletter-btn {
+            width: 100%;
+            background: var(--smv-red);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .smv-newsletter-btn:hover {
+            background: var(--smv-blue);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 991px) {
+            .smv-navbar {
+                padding: 15px 0;
+            }
+
+            .smv-logo {
+                height: 50px;
+            }
+
+            .navbar-collapse {
+                background: #0d1117;
+                padding: 20px;
+                border-radius: 8px;
+                margin-top: 15px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .dropdown-menu {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding-left: 15px;
+                margin-top: 0;
+            }
+
+            .dropdown-item {
+                color: #ccc;
+            }
+
+            .dropdown-item:hover {
+                background: transparent;
+                color: var(--smv-red);
+                padding-left: 25px;
+            }
+
+            .story-content {
+                padding-left: 0;
+                margin-top: 60px;
+            }
+
+            .story-badge {
+                right: 10px;
+                padding: 15px 25px;
+            }
+
+            .story-badge h3 {
+                font-size: 2rem;
+            }
+
+            .about-hero-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+    <header class="smv-navbar" id="smvNavbar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="smv-brand"><img src="assets/images/logo/smv-logo.png" alt="SMV Tubes Logo"
+                    class="smv-logo"></a>
+            <nav class="d-none d-lg-block">
+                <ul class="smv-nav-links">
+                    <li><a href="index.html" class="smv-nav-link">Home</a></li>
+                    <li><a href="about.html" class="smv-nav-link" style="color: var(--smv-red) !important;">About Us</a>
+                    </li>
+                    <li class="smv-dropdown-wrap">
+                        <span class="smv-nav-link">Products <i class="fa-solid fa-chevron-down ms-1"
+                                style="font-size: 10px;"></i></span>
+                        <div class="smv-dropdown-menu">
+                            <a href="#" class="smv-dropdown-item">SS Round Tubes / Pipes</a>
+                            <a href="#" class="smv-dropdown-item">SS Square Tubes / Pipes</a>
+                            <a href="#" class="smv-dropdown-item">SS Rectangle Tubes / Pipes</a>
+                            <a href="#" class="smv-dropdown-item">SS Oval Tubes</a>
+                            <a href="#" class="smv-dropdown-item">Custom Steel Profiles</a>
+                        </div>
+                    </li>
+                    <li><a href="quality.html" class="smv-nav-link">Quality</a></li>
+                    <li><a href="plants-and-machinery.html" class="smv-nav-link">Plants & Machinery</a></li>
+                    <li><a href="#blogs" class="smv-nav-link">Blogs</a></li>
+                    <li><a href="contact-us.html" class="smv-nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="d-none d-lg-block"><a href="contact-us.html" class="smv-cta-btn">Get a Quote</a></div>
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#smvNavMenu" aria-controls="smvNavMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Mobile Menu Links -->
+            <div class="collapse navbar-collapse d-lg-none" id="smvNavMenu"
+                style="position: absolute; top: 100%; left: 0; width: 100%; z-index: 1001;">
+                <ul class="navbar-nav ms-auto align-items-lg-center smv-nav-links flex-column align-items-start p-3">
+                    <li class="nav-item w-100"><a href="index.html" class="nav-link smv-nav-link">Home</a></li>
+                    <li class="nav-item w-100"><a href="about.html" class="nav-link smv-nav-link"
+                            style="color: var(--smv-red) !important;">About Us</a></li>
+                    <li class="nav-item dropdown smv-dropdown-wrap w-100">
+                        <a class="nav-link smv-nav-link dropdown-toggle" href="#" id="prodDropdownMobile" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu smv-dropdown-menu w-100" aria-labelledby="prodDropdownMobile">
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Round Tubes /
+                                    Pipes</a></li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Square Tubes /
+                                    Pipes</a></li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Rectangle Tubes
+                                    / Pipes</a></li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">SS Oval Tubes</a>
+                            </li>
+                            <li><a class="dropdown-item smv-dropdown-item" href="ss-round-pipes.html">Custom Steel
+                                    Profiles</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item w-100"><a href="quality.html" class="nav-link smv-nav-link">Quality</a></li>
+                    <li class="nav-item w-100"><a href="plants-and-machinery.html" class="nav-link smv-nav-link">Plants
+                            & Machinery</a>
+                    </li>
+                    <li class="nav-item w-100"><a href="#blogs" class="nav-link smv-nav-link">Blogs</a></li>
+                    <li class="nav-item w-100"><a href="contact-us.html" class="nav-link smv-nav-link">Contact Us</a>
+                    </li>
+                    <li class="nav-item w-100 mt-3"><a href="contact-us.html"
+                            class="smv-cta-btn w-100 justify-content-center text-decoration-none">Get a Quote</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================
+         ABOUT US: INNER HERO BANNER
+    ========================================= -->
+    <section class="about-page-hero">
+        <div class="about-hero-overlay"></div>
+        <div class="container about-hero-content">
+            <h1 class="about-hero-title gs-hero-anim">About <span>SMV Tubes</span></h1>
+            <div class="breadcrumb-wrap gs-hero-anim">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator"><i class="fa-solid fa-chevron-right"></i></span>
+                <span class="current">About Us</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         ABOUT US: OUR STORY (LIGHT THEME)
+    ========================================= -->
+    <section class="story-section theme-light section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="story-image-wrap gs-story-img">
+                        <img src="https://www.apsteel.in/assets/images/about/abt-pg-rght.jpeg" alt="SMV Factory Inside">
+                        <div class="story-badge">
+                            <h3>1998</h3>
+                            <p>Established</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="story-content">
+                        <span class="section-subtitle gs-story-text">Our Legacy</span>
+                        <h2 class="section-title gs-story-text mb-4">A Legacy of <span>Iron & Fire</span></h2>
+                        <p class="story-text gs-story-text">
+                            Founded in 1998, SMV Tubes started with a single vision: to redefine the standards of steel
+                            manufacturing in India. Over the past two decades, we have evolved from a humble local mill
+                            into a globally recognized powerhouse of industrial steel solutions.
+                        </p>
+                        <p class="story-highlight gs-story-text">
+                            "We forge more than just steel; we forge the structural integrity of the future's most
+                            ambitious projects."
+                        </p>
+                        <p class="story-text gs-story-text">
+                            Today, our state-of-the-art facilities span over 50 acres, equipped with next-generation
+                            rolling, welding, and testing machinery. Our uncompromising commitment to quality has made
+                            us the preferred partner for construction, automotive, and aerospace sectors across 50+
+                            countries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         ABOUT US: MISSION & VISION (LIGHT THEME)
+    ========================================= -->
+    <section class="mv-section section-padding">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="mv-card gs-mv-card">
+                        <i class="fa-solid fa-bullseye mv-icon"></i>
+                        <h3>Our Mission</h3>
+                        <p>To consistently engineer and deliver premium-grade stainless steel tubes that exceed
+                            international quality standards. We strive to empower global industries with durable,
+                            high-performance materials while maintaining operational excellence and sustainable
+                            manufacturing practices.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mv-card vision gs-mv-card">
+                        <i class="fa-solid fa-eye mv-icon"></i>
+                        <h3>Our Vision</h3>
+                        <p>To be the world's most trusted and innovative steel manufacturing brand. We envision a future
+                            where SMV Tubes is the fundamental backbone of modern infrastructure, driving technological
+                            advancement in metallurgy and setting benchmarks for quality globally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         ABOUT US: CORE VALUES (DARK THEME)
+    ========================================= -->
+    <section class="values-section theme-dark section-padding">
+        <div class="container">
+            <div class="section-header gs-value-head">
+                <span class="section-subtitle">Why Choose Us</span>
+                <h2 class="section-title">Our Core <span>Values</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-box gs-value-box">
+                        <div class="value-icon"><i class="fa-solid fa-gem"></i></div>
+                        <h4>Uncompromising Quality</h4>
+                        <p>Zero defect policy with 100% material traceability and strict ISO compliance.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-box gs-value-box">
+                        <div class="value-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h4>Advanced Tech</h4>
+                        <p>Leveraging next-gen automation and precision engineering in every batch.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-box gs-value-box">
+                        <div class="value-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                        <h4>Global Footprint</h4>
+                        <p>A robust supply chain delivering industrial steel across 50+ countries.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-box gs-value-box">
+                        <div class="value-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <h4>Sustainability</h4>
+                        <p>Committed to eco-friendly manufacturing and reducing carbon footprint.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+    <footer class="smv-footer theme-dark">
+        <div class="smv-footer-watermark">SMV TUBES</div>
+        <div class="container">
+            <div class="row smv-footer-top">
+                <div class="col-lg-4 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <img src="assets/images/logo/smv-logo.png" alt="SMV Tubes Logo"
+                        style="height: 65px; margin-bottom: 25px; filter: brightness(0) invert(1);">
+                    <p style="color: var(--smv-text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 30px;">
+                        Forging the structural future of the world with unyielding quality and precision steel
+                        manufacturing. Your globally trusted partner in industrial excellence.
+                    </p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #fff; font-size: 1.2rem; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);"><i
+                                class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #fff; font-size: 1.2rem; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="#"
+                            style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #fff; font-size: 1.2rem; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <h4 class="smv-footer-title">Quick Links</h4>
+                    <ul class="smv-footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="quality.html">Quality</a></li>
+                        <li><a href="plants-and-machinery.html">Plants & Machinery</a></li>
+                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <h4 class="smv-footer-title">Get In Touch</h4>
+                    <ul class="smv-contact-list">
+                        <li><i class="fa-solid fa-location-dot"></i><span>SMV Industrial Estate, Phase 1<br>New Delhi,
+                                India - 110020</span></li>
+                        <li><i class="fa-solid fa-phone"></i><span>+91 98765 43210<br>+91 11 2345 6789</span></li>
+                        <li><i class="fa-solid fa-envelope"></i><span>sales@smvtubes.com<br>info@smvtubes.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-5 smv-footer-col gs-footer">
+                    <h4 class="smv-footer-title">Newsletter</h4>
+                    <p style="color: var(--smv-text-muted); margin-bottom: 20px;">Subscribe to receive latest updates on
+                        steel market trends.</p>
+                    <div class="smv-newsletter-box">
+                        <input type="email" class="smv-newsletter-input" placeholder="Your Email Address"
+                            style="background: var(--smv-bg-base); border: 1px solid var(--smv-border); color: #fff; padding: 12px 15px; border-radius: 4px; width: 100%; margin-bottom: 15px; outline: none;">
+                        <button class="smv-newsletter-btn"
+                            style="width: 100%; background: var(--smv-red); color: #fff; border: none; padding: 12px; border-radius: 4px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s;">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row align-items-center smv-footer-col gs-footer" style="padding-top: 10px;">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p style="color: var(--smv-text-muted); margin: 0; font-size: 0.95rem;">&copy; 2026 SMV Tubes Pvt.
+                        Ltd. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#"
+                        style="color: var(--smv-text-muted); margin-left: 20px; font-size: 0.95rem; text-decoration: none;">Privacy
+                        Policy</a>
+                    <a href="#"
+                        style="color: var(--smv-text-muted); margin-left: 20px; font-size: 0.95rem; text-decoration: none;">Terms
+                        of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script>
+        // 1. Lenis Smooth Scroll
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. Navbar Script
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('smvNavbar');
+            if (navbar) {
+                if (window.scrollY > 50) navbar.classList.add('scrolled');
+                else navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 3. GSAP Animations for About Us Page
+        window.addEventListener('load', () => {
+            // Navbar
+            gsap.from(".smv-navbar", { y: -100, opacity: 0, duration: 1 });
+
+            // Hero Banner
+            gsap.from(".gs-hero-anim", { y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out", delay: 0.2 });
+
+            // Story Section
+            gsap.from(".gs-story-img", { scrollTrigger: { trigger: ".story-section", start: "top 75%" }, x: -50, opacity: 0, duration: 1 });
+            gsap.from(".gs-story-text", { scrollTrigger: { trigger: ".story-section", start: "top 70%" }, y: 30, opacity: 0, duration: 0.8, stagger: 0.15 });
+
+
+            // Core Values
+            gsap.from(".gs-value-head", { scrollTrigger: { trigger: ".values-section", start: "top 80%" }, y: 30, opacity: 0, duration: 0.8 });
+            gsap.from(".gs-value-box", { scrollTrigger: { trigger: ".values-section", start: "top 75%" }, y: 40, opacity: 0, duration: 0.8 });
+
+            // Footer
+            gsap.from(".gs-footer", { scrollTrigger: { trigger: ".smv-footer", start: "top 85%" }, y: 30, opacity: 0, duration: 0.8, stagger: 0.1 });
+
+            ScrollTrigger.refresh();
+        });
+    </script>
+</body>
+
+</html>
